@@ -12,7 +12,12 @@ aTbl[, .SD
      ][inc == 0, bracketP := NA
      ][, inc := inc + 1
      ][, rateMean := cummean(rate)
+     ][, incEarned := inc - inc * rateMean
      ][, rowid := 1:.N
+     ][, {bTbl <<- copy(.SD); .SD}
+     ]
+
+bTbl[, .SD
      ][rowid %in% sample(.N, 10000) | bracketP
      ][, ggplot(.SD, aes(inc, rateMean))
      + geom_line()
@@ -23,5 +28,12 @@ aTbl[, .SD
      + scale_x_continuous(label=comma, breaks=pretty_breaks(n=10))
      + scale_y_continuous(label=percent, breaks=pretty_breaks(n=10))
      + theme_bw()
+     ]
+
+bTbl[, .SD
+     ][, dIncEarned := incEarned - shift(incEarned)
+     ][rowid %in% sample(.N, 10000) | bracketP
+     ][, ggplot(.SD, aes(inc, dIncEarned))
+     + geom_point()
      ]
 
