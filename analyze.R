@@ -37,3 +37,7 @@ bTbl[, .SD
      + geom_point()
      ]
 
+bTbl[, .SD
+     #][inc == 195166
+     ][inc == 174000
+     ]
