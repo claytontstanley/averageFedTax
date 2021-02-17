@@ -38,5 +38,9 @@ bTbl[, .SD
      ]
 
 bTbl[, .SD
-     ][inc %in% c(195166, 225000, 234000, 234000 + 5000, 250000, 275000)
+     ][inc %in% c(
+		  247000			# 2021 go/grow estimate
+		  , 247000 - 12550 		# 2021 go/grow estimate - withholding
+		  , 247000 - 12550 + 5000	# 2021 go/grow estimate - withholding + sell of agg
+		  )
      ]
