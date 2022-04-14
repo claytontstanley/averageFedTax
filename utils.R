@@ -45,6 +45,12 @@ bTbl[, .SD
      + theme_bw()
      ]
 
+getPayTax(pay=157000
+	  , bonus=35000
+	  , equity=157663
+	  , profit=1000
+	  , pretax=20000
+	  , deduct=15550)
 
 
 
