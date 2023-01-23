@@ -46,10 +46,10 @@ bTbl[, .SD
      ]
 
 getPayTax(pay=157000
-	  , bonus=35000
-	  , equity=157663
+	  , bonus=36125
+	  , equity=126346
 	  , profit=1000
-	  , pretax=20000
+	  , pretax=20500 + 2650
 	  , deduct=15550)
 
 
