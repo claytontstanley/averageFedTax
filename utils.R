@@ -6,7 +6,7 @@ library(scales)
 
 getTaxTbl <- function() {
 	aTbl = data.table(rate=c(.1, .12, .22, .24, .32, .35, .37),
-			  inc=c(0, 9525, 38700, 82500, 157500, 200000, 500000))
+			  inc=c(0, 10275, 41775, 89075, 170050, 215950, 539900))
 	aTbl[, .SD
 	     ][.(inc=0:1000000), on=.(inc), roll=Inf
 	     ][, copy(.SD)[aTbl, bracketP := T, on=.(inc)]
