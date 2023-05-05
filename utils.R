@@ -20,10 +20,10 @@ getTaxTbl <- function() {
 }
 
 getPayTax <- function(pay, bonus, equity, profit, pretax, deduct) {
-	rate = bTbl[inc == (pay + bonus + equity + profit) - pretax - deduct][, rateMean]
-	rate
 	totPay = pay + bonus + equity + profit
-	totTax = (totPay - pretax - deduct) * rate
+	totInc = totPay - pretax - deduct
+	rate = bTbl[inc == totInc][, rateMean]
+	totTax = totInc * rate
 	taxFrom22 = (bonus + equity) * .22
 	taxRem = totTax - taxFrom22
 	data.table(payTaxRate=taxRem / (pay - pretax)
@@ -31,7 +31,6 @@ getPayTax <- function(pay, bonus, equity, profit, pretax, deduct) {
 		   , totTax=totTax
 		   , totPay=totPay)
 }
-
 
 bTbl = getTaxTbl()
 
@@ -49,3 +48,11 @@ bTbl[, .SD
      + theme_bw()
      ]
 
+source('data.R')
+
+getPayTax(pay=pay
+	  , bonus=bonus
+	  , equity=equity
+	  , profit=profit
+	  , pretax=pretax
+	  , deduct=deduct)
