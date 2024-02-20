@@ -30,7 +30,8 @@ getPayTax <- function(pay, bonus, equity, profit, pretax, deduct) {
 	data.table(payTaxRate=taxRem / (pay - pretax)
 		   , aveTaxRate=rate
 		   , totTax=totTax
-		   , totPay=totPay)
+		   , totPay=totPay
+		   , totInc = totInc)
 }
 
 bTbl = getTaxTbl()
