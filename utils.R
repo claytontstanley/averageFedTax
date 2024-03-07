@@ -21,7 +21,8 @@ getTaxTbl <- function() {
 }
 
 getPayTax <- function(pay, bonus, equity, profit, pretax, deduct) {
-	totPay = pay + bonus + equity + profit
+	totSal = pay + bonus + equity
+	totPay = totSal + profit
 	totInc = totPay - pretax - deduct
 	rate = bTbl[inc == totInc][, rateMean]
 	totTax = totInc * rate
@@ -31,7 +32,8 @@ getPayTax <- function(pay, bonus, equity, profit, pretax, deduct) {
 		   , aveTaxRate=rate
 		   , totTax=totTax
 		   , totPay=totPay
-		   , totInc = totInc)
+		   , totSal=totSal
+		   , totInc=totInc)
 }
 
 bTbl = getTaxTbl()
